@@ -2,6 +2,8 @@
 void main() {
   var person = Person('John Doe', 30,'man');
   person.printInfo();
+  var person2 = Person('cash', 20, 'woman');
+  person2.printInfo();
 }
 
 class Person{
@@ -11,5 +13,6 @@ class Person{
   Person(this.name , this.age ,this.group);
   void printInfo(){
     print('nmae:${name},age:${age},group: ${group}');
+
   }
 }
