@@ -1,4 +1,7 @@
-main() {}
+import 'dart:math';
+main() {
+
+}
 
 // 클레릭 성직자 클래스
 class Cleric {
@@ -25,5 +28,25 @@ class Cleric {
         print('마력이 부족 합니다.');
     }else{}
   }
-  
+
+  // pray
+  int pray(int prayTime){
+    Random heal = Random();
+    int totalRamdomNum = 0; // 리턴할 값을 0으로 초기화
+
+    // 받은 시간 만큼 랜덤으로 돌리기
+    for(int i =0; i<prayTime; i++ ){
+      totalRamdomNum  += heal.nextInt(3);
+    }
+
+    //mp에 mp 와 랜덤값을 추가한다.
+    mp  = mp + totalRamdomNum;
+
+    // 최대 MP 보다 더 회복하는 것은 불가능 하다.
+      if(mp <10){
+        mp =10;
+      }
+      return totalRamdomNum;
+  }
+
 }
