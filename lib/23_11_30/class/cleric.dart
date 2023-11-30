@@ -1,7 +1,4 @@
-main() {
-  Cleric cleric = Cleric('cleric', 50, 10);
-  cleric.selfAid(2);
-}
+main() {}
 
 // 클레릭 성직자 클래스
 class Cleric {
@@ -19,7 +16,7 @@ class Cleric {
   Cleric( this.name, this.hp, this.mp );
 
   //selfAid() 메소드
-  void selfAid(int mp) {
+  void selfAid() {
 
     if(mp < 10 && mp >= 5){
         hp =maxHp;
@@ -28,4 +25,5 @@ class Cleric {
         print('마력이 부족 합니다.');
     }else{}
   }
+  
 }
