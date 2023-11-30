@@ -22,7 +22,7 @@ class Cleric {
   void selfAid(int mp) {
 
     if(mp < 10 && mp >= 5){
-        hp =50;
+        hp =maxHp;
         mp =mp -5;
     }else if( mp < 5){
         print('마력이 부족 합니다.');
