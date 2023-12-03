@@ -1,23 +1,36 @@
 import 'dart:math';
 
-import 'package:dart_basic/23_11_30/class/hreo.dart';
-
-//1장의 연습문제에서 작성한 Cleric클래스에 관하여, 2가지 수정을 행하시오.
-// 현시점의 Cleric 클래스의 정의에는, 각 인스턴스별로 최대 HP와 최대 MP 필드에 정보를 가지고 있습니다. 하지만,
-// 모든 성직자의 최대 HP 는 50, 최대 MP 는 10으로 정해져 있어, 각 인스턴스가 각각의 정보를 가지는 것은 메모리 낭비이다.
-// 그래서, 최대 HP, 최대 MP의 필드가 각 인스턴스별로 있지 않도록, 필드 선언에 적절한 키워드를 추가 하던지 말던지 자유.
-
-//
-
-
 // 최상위 함수(탑레벨) 선언
 const int maxHp = 50;
 const int maxMp = 10;
 
 void main() {
+  //A 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이, 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
+  Cleric arthasA = Cleric('아서스A', hp: 40, mp: 5);
+  print('아서스A 이름: ${arthasA.name}');
+  print('아서스A hp: ${arthasA.hp}');
+  print('아서스A mp: ${arthasA.mp}');
 
+  //B 이 클래스는 Cleric(“아서스", hp: 35) 와 같이, 이름과 HP만으로 지정하여 인스턴스화 할 수 있다. 이 때, MP는 최대 MP와 같은 값이 초기화 된다
+  Cleric arthasB = Cleric('아서스B', hp: 35, mp: maxMp);
+  print('아서스B 이름: ${arthasB.name}');
+  print('아서스B hp: ${arthasB.hp}');
+  print('아서스B mp: ${arthasB.mp}');
+
+  //C 이 클래스는 Cleric(“아서스") 와 같이 이름만을 지정하여 인스턴스화 할 수 있다. 이 때, HP 와 MP 는 최대 HP와 최대 MP로 초기화 된다
+  Cleric arthasC = Cleric('아서스C', hp: maxHp, mp: maxMp);
+  print('아서스C 이름: ${arthasC.name}');
+  print('아서스C hp: ${arthasC.hp}');
+  print('아서스C mp: ${arthasC.mp}');
+
+  //D 이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다. (이름이 없는 성직자는 존재 할 수 없음)
+  try {}
+  catch (e) {
+    print('이름이 없는 성직자는 존재 할 수가 없음');
+  }
+
+  // 생성자는 가능한 한 중복되는 코드가 없도록 작성한다  위에 중복 없이 헀다.
 }
-
 
 // 클레릭 성직자 클래스
 class Cleric {
