@@ -10,9 +10,10 @@ class Person{
     required String name,
   }) : _name = name;
 
-
+  // getter
   String get name => _name;
 
+  // setter  타탕성 검사
   set name(String value) {
     if(value.length <= 1){
       throw Exception('에러발생 ');
