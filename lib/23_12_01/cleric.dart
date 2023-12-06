@@ -57,7 +57,7 @@ class Cleric {
     // 리턴할 값을 0으로 초기화
     int recoveryMp = 0;
 
-    // 받은 시간 만큼 랜덤으로 돌리기
+    //(4~6초) 받은 시간 만큼 랜덤으로 돌리기
     for (int i = 4; i < prayTime; i++) {
       recoveryMp += heal.nextInt(3);
     }

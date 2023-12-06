@@ -17,7 +17,7 @@ abstract class IronMan {
 //@override 구문을 사용하여 abstract method 구현
 class Mark50 extends IronMan {
 
-  Mark50(String name , String suitColor): super(name , suitColor );
+  Mark50(String name , String suitColor): super();
 
   @override
   void fly(){
