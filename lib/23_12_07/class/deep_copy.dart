@@ -13,7 +13,7 @@ void main() {
   final s3 = s1.copyWith(name:'학생1');
   print(s3);
 
-  final s4 = s1.copyWith(age: 12);
+  final s4 = s1.copyWith(age: 12, name: '학생1',classRoom: '강의실1 ');
   print(s4);
 
   final s5 = s1.copyWith(name: '학생1', age: 11);
