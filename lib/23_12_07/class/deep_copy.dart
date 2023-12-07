@@ -1,23 +1,23 @@
 void main() {
   print(Student(name: '학생1', classRoom:  '강의실1', age:10,) == Student(name: '학생1', classRoom:  '강의실1', age:10));
 
-  final p1 = Student(name: '학생1', classRoom:  '강의실1', age:10);
+  final s1 = Student(name: '학생1', classRoom:  '강의실1', age:10);
 
-  final clone = Student( name: 'p1.name', classRoom: p1.classRoom, age: p1.age );
+  final clone = Student( name: '학생1', classRoom: s1.classRoom, age: s1.age );
 
-  print(p1 == clone);
+  print(s1 == clone);
 
-  final p2 = p1.copyWith();
-  print(p1 == p2);
+  final s2 = s1.copyWith();
+  print(s1 == s2);
 
-  final p3 = p1.copyWith(name: 'b');
-  print(p3);
+  final s3 = s1.copyWith(name:'학생1');
+  print(s3);
 
-  final p4 = p1.copyWith(age: 50);
-  print(p4);
+  final s4 = s1.copyWith(age: 12);
+  print(s4);
 
-  final p5 = p1.copyWith(name: 'c', age: 90);
-  print(p5);
+  final s5 = s1.copyWith(name: '학생1', age: 11);
+  print(s5);
 }
 
 
@@ -49,7 +49,7 @@ class Student {
 
   @override
   String toString() {
-    return 'Student{classRoom: $classRoom}';
+    return 'Student{name: $name, classRoom: $classRoom, age: $age}';
   }
 
   @override
