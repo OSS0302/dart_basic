@@ -15,5 +15,5 @@ void main(){
     case 3:
       print('red');
   }
-S
+
 }

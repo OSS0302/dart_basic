@@ -6,9 +6,6 @@ class Word{
   String word = '';
 
   bool isVowel(int i ){
-    List<String> vowels = ['a','e','i','o','u'];
-      for(String vowel in vowels){
-        print(vowel);
       }
     return word.substring(i, i+1) == 'a';
   }

@@ -3,7 +3,7 @@ void main() {
 
   final s1 = Student(name: '학생1', classRoom:  '강의실1', age:10);
 
-  final clone = Student( name: '학생1', classRoom: s1.classRoom, age: s1.age );
+  final clone = Student( name: s1.name , classRoom: s1.classRoom, age: s1.age );
 
   print(s1 == clone);
 
@@ -18,6 +18,10 @@ void main() {
 
   final s5 = s1.copyWith(name: '학생1', age: 11);
   print(s5);
+
+  String name = '22';
+
+
 }
 
 
