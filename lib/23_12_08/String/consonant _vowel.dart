@@ -37,7 +37,7 @@ void main() {
 class Word {
   String word = '';
 
-  bool isVowel(int no, String value) {
+  bool isVowel(int i, String value) {
     if (value.toLowerCase() == 'a' ||
         value.toLowerCase() == 'e' ||
         value.toLowerCase() == 'i' ||
@@ -47,7 +47,9 @@ class Word {
     } else {
       return false;
     }
+  }
 
-    return word.substring(no, no + 1) == 'a';
+  bool isConsonant(int i, String value) {
+    return !isVowel(i, value);
   }
 }
