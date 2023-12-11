@@ -4,28 +4,6 @@
 // put() 메서드로 인스턴스를 저장하고 get() 메서드로 인스턴스를 얻을 있음
 // get() 으로 얻을 때는 별도의 타입 캐스팅을 사용하지 않아도 됨
 
-class StrongBox<E> {
-  E? _strongItem;
-  int _count;
-  KeyType _keyType;
-  int boxOpenCount = 10000;
-
-  StrongBox({
-    required KeyType keyType,
-  })  : _keyType = keyType,
-        _count = keyOpenCount[keyType] ?? 0;
-
-  void put(E data) {
-    _strongItem = data;
-  }
-
-  // getter
-  E? get() {
-    boxOpenCount = boxOpenCount + 1;
-    (_count < boxOpenCount) ? _strongItem : null;
-  }
-}
-
 enum KeyType {
   //1024 회 이상 열면 오픈
   padlock,
@@ -37,52 +15,60 @@ enum KeyType {
   finger,
 }
 
-// map <Key value>
-Map<KeyType, int> keyOpenCount = {
-  KeyType.padlock: 1024,
-  KeyType.button: 100000,
-  KeyType.dial: 30000,
-  KeyType.finger: 1000000,
-};
+class StrongBox<E> {
+  KeyType _keyType;
+  E? _strongItem;
+  int _count = 0;
+
+  StrongBox(this._keyType);
+
+  void put(E strongItem) => _strongItem = strongItem;
+
+  E? get() {
+    _count++;
+    switch (_keyType) {
+      case KeyType.padlock:
+        if (_count > 1024) {
+          return _strongItem;
+        }
+      case KeyType.button:
+        if (_count > 10000) {
+          return _strongItem;
+        }
+      case KeyType.dial:
+        if (_count > 30000) {
+          return _strongItem;
+        }
+      case KeyType.finger:
+        if (_count > 1000000) {
+          return _strongItem;
+        }
+        break;
+    }
+    return null;
+  }
+}
 
 void main() {
-  //padlockBox
-  StrongBox<String> padlockBox = StrongBox(keyType: KeyType.padlock);
+  final padlockBox = StrongBox<String>(KeyType.padlock);
   padlockBox.put('padlockBox 오픈');
-  for (int i = 0; i <= 1024; i++) {
-    String? getBox = padlockBox.get();
-    if (getBox != null) {
-      print('getBox: $getBox');
-    }
+  for (int i = 0; i < 1025; i++) {
+    print('${i + 1}번째: ${padlockBox.get()}');
   }
+   final buttonBox = StrongBox<String>(KeyType.button);
+   buttonBox.put('buttonBox 오픈');
+   for (int i = 0; i < 10001; i++) {
+     print('${i + 1}번째: ${buttonBox.get()}');
+   }
 
-  //buttonBox
-  StrongBox<String> buttonBox = StrongBox(keyType: KeyType.padlock);
-  buttonBox.put('buttonBox 오픈 ');
-  for (int i = 0; i <= 10000; i++) {
-    String? getBox = buttonBox.get();
-    if (getBox != null) {
-      print('getBox: $getBox');
-    }
-
-    // dialBox
-    StrongBox<String> dialBox = StrongBox(keyType: KeyType.padlock);
-    dialBox.put('dialBox 오픈 ');
-    for (int i = 0; i <= 30000; i++) {
-      String? getBox = dialBox.get();
-      if (getBox != null) {
-        print('getBox: $getBox');
-      }
-    }
-
-    // fingerBox
-    StrongBox<String> fingerBox = StrongBox(keyType: KeyType.padlock);
-    fingerBox.put('fingerBox 오픈 ');
-    for (int i = 0; i <= 30000; i++) {
-      String? getBox = fingerBox.get();
-      if (getBox != null) {
-        print('getBox: $getBox');
-      }
-    }
+  final dialBox = StrongBox<String>(KeyType.dial);
+  dialBox.put('dialBox 오픈');
+  for (int i = 0; i < 30001; i++) {
+    print('${i + 1}번째: ${dialBox.get()}');
+  }
+  final fingerBox = StrongBox<String>(KeyType.finger);
+  fingerBox.put('dialBox 오픈');
+  for (int i = 0; i < 1000001; i++) {
+    print('${i + 1}번째: ${fingerBox.get()}');
   }
 }
