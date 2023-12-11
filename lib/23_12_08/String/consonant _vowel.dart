@@ -45,7 +45,7 @@ class Word {
         value.toLowerCase() == 'u') {
       return true;
     } else {
-      false;
+      return false;
     }
 
     return word.substring(no, no + 1) == 'a';
