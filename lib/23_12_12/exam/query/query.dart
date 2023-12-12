@@ -43,36 +43,48 @@ void main() {
        .map((e) => e.trader.name)
        .toSet()
        .toList());
+
 // 2. 거래자가 근무하는 모든 도시를 중복 없이 나열하시오
   print(transactions.map((e) => e.trader.city)
         .toSet()
         .toList());
+
 // 3. 케임브리지에서 근무하는 모든 거래자를 찾아서 이름순으로 정렬하여 나열하시오
   print(transactions
       .where((e) => e.trader.city == 'Cambridge')
       .map((e) => e.trader.name)
       .toSet()
       .toList());
+
 // 4. 모든 거래자의 이름을 알파벳순으로 정렬하여 나열하시오
   print(transactions
         .sorted((a, b) => a.trader.name.compareTo(b.trader.name))
         .map((e) => e.trader.name)
         .toList());
+
 //5. 밀라노에 거래자가 있는가? any는 bool 값을  반환한다.
 print((transactions.any((e) => e.trader.city =='Milan')));
-      
+
 // 6. 케임브리지에 거주하는 거래자의 모든 트랙잭션값을 출력하시오
-print(transactions.where((e)=> e.trader.city == 'Cambridge' )
+print(transactions.where((e)=> e.trader.city == 'Cambridge')
       .toList());
+
 // 7. 전체 트랜잭션 중 최대값은 얼마인가?
+  // 리스트 max 사용
 print(transactions.map((e) => e.value)
       .toList().max);
+
+ // reduce 메소드 사용
  print(transactions.map((e)=> e.value)
         .reduce((v, e) => max(v,e)));
 
 // 8. 전체 트랜잭션 중 최소값은 얼마인가?
+
+  // 리스트 max 사용
   print(transactions.map((e) => e.value)
       .toList().min);
+
+  // reduce 메소드 사용
   print(transactions.map((e)=> e.value)
       .reduce((v, e) => max(v,e)));
 }
