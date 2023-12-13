@@ -23,6 +23,9 @@ void main(){
   // 조건주고 리스트 변환
   print(list.where((e) => e.isEven).toList());
 
+  //any 
+  print(list.any((e) => e.isEven));
+
   //map 변환
   print(list.where((e) => e.isEven)
     .map((e) => 'e$e 번째'));
