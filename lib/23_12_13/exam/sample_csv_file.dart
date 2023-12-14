@@ -20,19 +20,22 @@ void main() {
   copy(source: 'sample.csv', target: 'sample copy.csv');
 }
 
-Future<void> copy({required String source, required String target}) async {
+Future<void> copy({required String source  , required String target}) async {
   final secondFile = await File(target).create(recursive: true);
   String sampleString = await File(source).readAsString();
+
 
   // sample.csv 파일을 읽어와서 “한석봉" 이라는 문자열이 있는지 찾고, 있다면
   //sample_copy.csv 파일에 “김석봉"으로 수정하는 함수를 작성하시오.
   if (sampleString.contains('한석봉')) {
     await secondFile.writeAsString(sampleString.replaceAll('한석봉', '김석봉'));
+    print(sampleString.split(','));
+
+    await secondFile.writeAsString(sampleString.replaceAll('30', '50'));
+
 
     String sampleSecondString = await secondFile.readAsString();
-    print('두번째: $sampleSecondString');
-
-
+    // print('두번째: $sampleSecondString');
   } else {
     throw Exception('파일이 존재 하지 않습니다.');
   }
