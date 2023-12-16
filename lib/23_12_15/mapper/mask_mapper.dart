@@ -1,14 +1,14 @@
-import 'package:dart_basic/23_12_15/model/pharmacy.dart';
+import 'package:dart_basic/23_12_15/model/store.dart';
 
 import '../dto/mask_dto.dart';
 
 
-extension PharmacyToPharmacy on Pharmacys {
-  Pharmacy toPharmacy() {
-    return Pharmacy(
+extension StoresToStore on Stores {
+  Store toStore() {
+    return Store(
       name: name ?? '',
-      address: addr ?? '주소 없음',
-      stocks: remainStat ?? 'null',
+      address: addr ?? '주소가 없 습니다',
+      stock: remainStat ?? 'null',
       type: type != null ? int.parse(type!) : 0,
     );
   }

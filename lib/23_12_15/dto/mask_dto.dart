@@ -1,18 +1,20 @@
+
+
 class MaskDto {
   num? count;
-  List<Pharmacys>? pharmacys;
+  List<Stores>? stores;
 
   MaskDto({
     this.count,
-    this.pharmacys,
+    this.stores,
   });
 
   MaskDto.fromJson(dynamic json) {
     count = json['count'];
-    if (json['pharmacys'] != null) {
-      pharmacys = [];
-      json['pharmacys'].forEach((v) {
-        pharmacys?.add(Pharmacys.fromJson(v));
+    if (json['stores'] != null) {
+      stores = [];
+      json['stores'].forEach((v) {
+        stores?.add(Stores.fromJson(v));
       });
     }
   }
@@ -20,14 +22,14 @@ class MaskDto {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['count'] = count;
-    if (pharmacys != null) {
-      map['pharmacys'] = pharmacys?.map((v) => v.toJson()).toList();
+    if (Stores != null) {
+      map['stores'] = stores?.map((v) => v.toJson()).toList();
     }
     return map;
   }
 }
 
-class Pharmacys {
+class Stores {
   String? addr;
   String? code;
   String? createdAt;
@@ -38,7 +40,7 @@ class Pharmacys {
   String? stockAt;
   String? type;
 
-  Pharmacys({
+  Stores({
     this.addr,
     this.code,
     this.createdAt,
@@ -50,7 +52,7 @@ class Pharmacys {
     this.type,
   });
 
-  Pharmacys.fromJson(dynamic json) {
+  Stores.fromJson(dynamic json) {
     addr = json['addr'];
     code = json['code'];
     createdAt = json['created_at'];
@@ -75,5 +77,4 @@ class Pharmacys {
     map['type'] = type;
     return map;
   }
-
 }
